@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+.nav-hover:hover {
+  background: linear-gradient(98.68deg, #F652EE -22.73%, #0AD1E3 85.57%, #F6C174 114.23%);
+  border-radius: 8px; /* Subtle rounding looks more professional than 50% */
+  /* Smooths the color transition */
+}
