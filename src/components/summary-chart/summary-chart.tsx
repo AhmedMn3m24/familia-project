@@ -13,7 +13,7 @@ const barData = [
   { month: "Jan", value: 100, bg: 350 },
   { month: "Feb", value: 300, bg: 350 },
   { month: "Mar", value: 300, bg: 350 },
-  { month: "Apr", value: 250  , bg: 350 },
+  { month: "Apr", value: 250, bg: 350 },
   { month: "May", value: 200, bg: 350 },
   { month: "Jun", value: 125, bg: 350 },
   { month: "Jul", value: 180, bg: 350 },
@@ -40,41 +40,44 @@ export default function SummaryChart() {
         </div>
       </div>
 
-      <div className="flex-1 w-full px-4 pb-4">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={barData} barSize={15} barGap={-14}>
-            <CartesianGrid
-              vertical={false}
-              stroke="#F1F5F9"
-              strokeDasharray="0"
-            />
+      {/* الفيكس: relative على الـ parent + absolute inset-0 على الـ child */}
+      <div className="relative flex-1 w-full">
+        <div className="absolute inset-0 px-4 pb-4">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={barData} barSize={15} barGap={-14}>
+              <CartesianGrid
+                vertical={false}
+                stroke="#F1F5F9"
+                strokeDasharray="0"
+              />
 
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              axisLine={false}
-              tick={{ fill: "#94a3b8", fontSize: 16 }}
-              dy={15}
-            />
+              <XAxis
+                dataKey="month"
+                tickLine={false}
+                axisLine={false}
+                tick={{ fill: "#94a3b8", fontSize: 16 }}
+                dy={15}
+              />
 
-            <YAxis
-              tickLine={false}
-              axisLine={false}
-              tick={{ fill: "#94a3b8", fontSize: 16 }}
-              domain={[0, 400]}
-              ticks={[0, 50, 100, 150, 200, 250, 300, 350, 400]}
-            />
+              <YAxis
+                tickLine={false}
+                axisLine={false}
+                tick={{ fill: "#94a3b8", fontSize: 16 }}
+                domain={[0, 400]}
+                ticks={[0, 50, 100, 150, 200, 250, 300, 350, 400]}
+              />
 
-            <Bar
-              dataKey="bg"
-              fill="#F8FAFC"
-              radius={[10, 10, 10, 10]}
-              isAnimationActive={false}
-            />
+              <Bar
+                dataKey="bg"
+                fill="#F8FAFC"
+                radius={[10, 10, 10, 10]}
+                isAnimationActive={false}
+              />
 
-            <Bar dataKey="value" fill="#00CFE8" radius={[10, 10, 10, 10]} />
-          </BarChart>
-        </ResponsiveContainer>
+              <Bar dataKey="value" fill="#00CFE8" radius={[10, 10, 10, 10]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </div>
   );
