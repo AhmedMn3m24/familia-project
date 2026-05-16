@@ -26,53 +26,58 @@ const barData = [
 
 export default function SummaryChart() {
   return (
-    <div className="bg-white rounded-[24px] p-10 w-full h-[470px] shadow-sm border border-gray-50 flex flex-col">
-      <div className="flex items-center justify-between mb-12 px-2">
-        <h2 className="text-black font-bold text-xl">Quick Summary</h2>
+    <div
+      className="
+      bg-white
+      rounded-[24px]
+      w-full
+      shadow-sm
+      border border-gray-50
+      flex flex-col
 
-        <div className="flex items-center gap-5 text-semibold font-medium">
-          <button className="bg-[#00CFE8] text-white px-6 py-2 rounded-lg shadow-lg">
+      p-4 sm:p-6 lg:p-10
+      h-[320px] sm:h-[400px] lg:h-[470px]
+    "
+    >
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 lg:mb-12">
+        <h2 className="text-white font-bold text-lg lg:text-xl">
+          Quick Summary
+        </h2>
+
+        <div className="flex flex-wrap items-center gap-2 text-sm lg:text-base font-medium">
+          <button className="bg-[#00CFE8] text-white px-3 lg:px-6 py-2 rounded-lg shadow-lg">
             Year
           </button>
+
           <button className="text-gray-500 hover:text-cyan-500">Month</button>
+
           <button className="text-gray-500 hover:text-cyan-500">Week</button>
+
           <button className="text-gray-500 hover:text-cyan-500">Day</button>
         </div>
       </div>
 
-      {/* الفيكس: relative على الـ parent + absolute inset-0 على الـ child */}
-      <div className="relative flex-1 w-full">
-        <div className="absolute inset-0 px-4 pb-4">
+      <div className="relative flex-1 w-full min-h-0">
+        <div className="absolute inset-0">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={barData} barSize={15} barGap={-14}>
-              <CartesianGrid
-                vertical={false}
-                stroke="#F1F5F9"
-                strokeDasharray="0"
-              />
+            <BarChart data={barData} barSize={12}>
+              <CartesianGrid vertical={false} stroke="#F1F5F9" />
 
               <XAxis
                 dataKey="month"
                 tickLine={false}
                 axisLine={false}
-                tick={{ fill: "#94a3b8", fontSize: 16 }}
-                dy={15}
+                tick={{ fill: "#94a3b8", fontSize: 12 }}
               />
 
               <YAxis
                 tickLine={false}
                 axisLine={false}
-                tick={{ fill: "#94a3b8", fontSize: 16 }}
+                tick={{ fill: "#94a3b8", fontSize: 12 }}
                 domain={[0, 400]}
-                ticks={[0, 50, 100, 150, 200, 250, 300, 350, 400]}
               />
 
-              <Bar
-                dataKey="bg"
-                fill="#F8FAFC"
-                radius={[10, 10, 10, 10]}
-                isAnimationActive={false}
-              />
+              <Bar dataKey="bg" fill="#F8FAFC" radius={[10, 10, 10, 10]} />
 
               <Bar dataKey="value" fill="#00CFE8" radius={[10, 10, 10, 10]} />
             </BarChart>
